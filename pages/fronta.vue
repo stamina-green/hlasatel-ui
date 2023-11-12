@@ -59,7 +59,7 @@ const states = [
     </div>
   </div>
 </template>
-
+ 
 <style lang="scss">
 .fronta-container {
   display: flex;
