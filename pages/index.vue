@@ -21,10 +21,16 @@ watch(hlaseniTextValue, (nvalue) => {
 
 const sendHlaseni = () => {
   console.log(hlaseniTextValue.value);
-  alert({
+  alert(JSON.stringify({
     val: hlaseniTextValue.value,
+    rychlost: speed.value / 10,
+    kdy: cas.value,
+    ted: new Date(),
     route: route
-  })
+  }))
+  hlaseniTextValue.value = ''
+  speed.value = 10
+  cas.value = 'b7'
 }
 
 </script>
@@ -39,8 +45,9 @@ const sendHlaseni = () => {
       <span> {{ (speed / 10).toFixed(1) }} </span>
       <URange :min="5" :max="20" :step="5" v-model="speed" />
       <br>
+      <h5>Čas hlášení</h5>
       <USelect v-model="cas" :options="availableCasy" option-attribute="name" />
-
+      <br>
       <br>
       <UButton @click="sendHlaseni">Odeslat</UButton>
     </div>
